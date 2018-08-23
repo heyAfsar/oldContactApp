@@ -1,0 +1,50 @@
+<mvc:View controllerName="com.sap.ContactApp.ContactApp.controller.homeView" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:t="sap.ui.table" xmlns:c="sap.ui.core">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}">
+				<content>
+					<t:Table selectionMode="MultiToggle" enableColumnReordering="false" enableSelectAll="true"
+						rows="{path: 'mockModel>/'}" threshold="15" ariaLabelledBy="title">
+						<t:toolbar>
+									<Toolbar>
+										<Title id="title" text="Items ({path: 'mockModel>/', formatter: '.count'})"></Title>
+										<ToolbarSpacer/>
+										<SearchField id="search" placeholder="Search" showSearchButton="true" search="filterGlobally" visible="true" width="auto"/>
+										<Button icon="sap-icon://decline" tooltip="Clear all filters" press="clearAllFilters"/>
+										<!--<OverflowToolbarButton text="Settings" press="handlePopoverPress" type="Transparent" icon="sap-icon://action-settings" iconFirst="true"
+											width="auto" enabled="true" visible="true" iconDensityAware="false"/>-->
+									</Toolbar>
+								</t:toolbar>
+						<t:columns>
+							<t:Column id="name" autoResizable="false"  sortProperty="name" filterProperty="name" >
+								<Label text="Name"/>
+								<t:template>
+									<Text text="{mockModel>name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column id="phoneNumber" autoResizable="false" sortProperty="phoneNumber" filterProperty="phoneNumber"  >
+								<Label text="Phone"/>
+								<t:template>
+									<Text text="{mockModel>phoneNumber}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+							<t:Column width="5%">
+										<Label text="Edit"/>
+										<t:template>
+											<c:Icon  src="sap-icon://edit" id="editIcon"  color="#346187" tooltip="{i18n>delete}" press="onEdit"/>
+										</t:template>
+									</t:Column>
+							<t:Column width="5%">
+										<Label text="Delete"/>
+										<t:template>
+											<c:Icon  src="sap-icon://delete" id="delIcon"  color="#346187" tooltip="{i18n>delete}" press="onDelete"/>
+										</t:template>
+									</t:Column>
+						</t:columns>
+					</t:Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
